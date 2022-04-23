@@ -17,9 +17,9 @@ public class ProcessingBar extends Task<Void> {
     @Override
     protected Void call() throws Exception {
 
-        // this.progressProperty() В данном случае, класс (любой)
-        // должен содержать метод updateProgress
-        // где передаётся значение в Bar
+        // Есть ещё вариант с методом bind
+        // Например
+        // progressBar.progressProperty().bind(this.progressProperty());
 
         double startValue = 0D;
         System.out.println("start");
@@ -28,11 +28,14 @@ public class ProcessingBar extends Task<Void> {
             setValue(startValue+=0.1D);
             System.out.println("Change Bar");
         }
-
         return null;
     }
 
     private void setValue(double value){
         Platform.runLater(()->{this.progressBar.setProgress(value);});
     }
+
+
+
+
 }
